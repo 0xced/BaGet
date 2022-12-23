@@ -72,6 +72,7 @@ namespace BaGet
 
             // Add search providers.
             app.AddAzureSearch();
+            app.AddNuGetMirrorSearch();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -18,6 +18,16 @@ namespace BaGet.Core
         public Uri PackageSource { get; set; }
 
         /// <summary>
+        /// The optional user for performing basic authentication to the package source.
+        /// </summary>
+        public string User { get; set; }
+
+        /// <summary>
+        /// The optional password for performing basic authentication to the package source.
+        /// </summary>
+        public string Password { get; set; }
+
+        /// <summary>
         /// Whether or not the package source is a v2 package source feed.
         /// </summary>
         public bool Legacy { get; set; }

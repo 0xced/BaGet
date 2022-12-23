@@ -49,6 +49,7 @@ namespace BaGet
             {
                 "AzureSearch",
                 "Database",
+                "Mirror",
                 "Null",
             };
 

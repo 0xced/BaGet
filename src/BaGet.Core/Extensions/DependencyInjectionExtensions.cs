@@ -1,7 +1,9 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
+using System.Text;
 using BaGet.Protocol;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -180,6 +182,11 @@ namespace BaGet.Core
             });
 
             client.DefaultRequestHeaders.Add("User-Agent", $"{assemblyName}/{assemblyVersion}");
+            if (!string.IsNullOrEmpty(options.User) && !string.IsNullOrEmpty(options.Password))
+            {
+                var authorization = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{options.User}:{options.Password}"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authorization);
+            }
             client.Timeout = TimeSpan.FromSeconds(options.PackageDownloadTimeoutSeconds);
 
             return client;
